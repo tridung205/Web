@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Shopping Cart - Green Garden</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJc5b5Uf3s3uG5f760x9j4e4y9u1t/r/i3n4pT4fR8f0A9f7c0a8c2l8x9j4b9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        :root {
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-700: #15803d;
+            --green-900: #14532d;
+            --red-sale: #dc2626;
+            --shadow-green: rgba(21, 128, 61, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--green-50); 
+        }
+        
+        .text-primary-green { color: var(--green-700) !important; }
+        .text-dark-green { color: var(--green-900) !important; }
+        .btn-green {
+            background-color: var(--green-700);
+            color: white;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-green:hover {
+            background-color: var(--green-900); 
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Product in Cart */
+        .cart-item {
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 0.5rem;
+        }
+        
+        /* Quantity Input (Reused) */
+        .quantity-input {
+            width: 100px;
+            display: flex;
+            align-items: center;
+        }
+        .quantity-input input {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-right: none;
+            width: 30px;
+            height: 30px;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+        .quantity-input button {
+            width: 35px;
+            height: 30px;
+            background-color: var(--green-100);
+            border: 1px solid #ccc;
+            color: var(--green-700);
+            transition: background-color 0.1s;
+        }
+        .quantity-input button:hover {
+             background-color: var(--green-700);
+             color: white;
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 100px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-lg bg-white container py-3">
+            <a class="navbar-brand fs-3 fw-bold text-dark-green d-flex align-items-center" href="index.html">
+                🌿 **Green Garden**
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium me-lg-3" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium me-lg-3" href="all-products.html">Plants</a></li>
+                    <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle btn btn-outline-success rounded-pill py-2 px-4 border-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Login</a></li>
+                            <li><a class="dropdown-item" href="#">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link btn btn-green rounded-pill py-2 px-4 shadow-sm active" href="cart.html">
+                            <i class="fas fa-shopping-cart me-1"></i> **Cart (2)**
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container my-5">
+        
+        <h1 class="fw-bold text-dark-green mb-4 border-bottom pb-2">🛒 Your Shopping Cart</h1>
+
+        <div class="row g-4">
+            
+            <div class="col-lg-8">
+                
+                <div class="d-flex cart-item align-items-center">
+                    <img src="images/golden-snake-plant.jpg" alt="Snake Plant" class="cart-item-image me-3">
+                    <div class="flex-grow-1">
+                        <h5 class="fw-bold text-dark-green mb-1">Golden Edge Snake Plant</h5>
+                        <p class="text-muted small mb-2">Price: 135.000₫</p>
+                        
+                        <div class="d-flex align-items-center">
+                            <div class="quantity-input me-4">
+                                <button class="btn rounded-start" type="button" onclick="updateQuantity(1, -1)">-</button>
+                                <input type="number" id="qty-1" value="1" min="1" readonly>
+                                <button class="btn rounded-end" type="button" onclick="updateQuantity(1, 1)">+</button>
+                            </div>
+                            <span class="fw-bold text-primary-green fs-6" id="total-1">135.000₫</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-danger btn-sm rounded-circle" onclick="removeItem(1)"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="d-flex cart-item align-items-center">
+                    <img src="images/money-tree.jpg" alt="Money Tree" class="cart-item-image me-3">
+                    <div class="flex-grow-1">
+                        <h5 class="fw-bold text-dark-green mb-1">Prosperous Money Tree</h5>
+                        <p class="text-muted small mb-2">Price: 180.000₫</p>
+                        
+                        <div class="d-flex align-items-center">
+                            <div class="quantity-input me-4">
+                                <button class="btn rounded-start" type="button" onclick="updateQuantity(2, -1)">-</button>
+                                <input type="number" id="qty-2" value="1" min="1" readonly>
+                                <button class="btn rounded-end" type="button" onclick="updateQuantity(2, 1)">+</button>
+                            </div>
+                            <span class="fw-bold text-primary-green fs-6" id="total-2">180.000₫</span>
+                        </div>
+                    </div>
+                    <div>
+                        <button class="btn btn-outline-danger btn-sm rounded-circle" onclick="removeItem(2)"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+
+                <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+                    <a href="all-products.html" class="btn btn-outline-secondary rounded-pill px-4">
+                        <i class="fas fa-arrow-left me-2"></i> Continue Shopping
+                    </a>
+                    <button class="btn btn-danger rounded-pill px-4" onclick="clearCart()">
+                        <i class="fas fa-trash-alt me-2"></i> Clear All
+                    </button>
+                </div>
+
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="summary-card">
+                    <h4 class="fw-bold text-dark-green mb-4">Order Summary</h4>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Subtotal (2 items)</span>
+                        <span id="subtotal">315.000₫</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-2">
+                        <span>Shipping Fee</span>
+                        <span class="text-success">Free</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between mb-4 pb-2 border-bottom">
+                        <span>Coupon (FREETREES)</span>
+                        <span class="text-danger">-15.000₫</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h5 class="fw-bold text-dark-green mb-0">Grand Total</h5>
+                        <h3 class="fw-bold text-primary-green mb-0" id="grand-total">300.000₫</h3>
+                    </div>
+
+                    <button class="btn btn-green btn-lg rounded-pill w-100" onclick="checkout()">
+                        <i class="fas fa-lock me-2"></i> **Checkout**
+                    </button>
+                    
+                    <p class="text-muted small mt-3 text-center mb-0">Secure and safe payment</p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="text-center border-top border-secondary-subtle pt-3 mt-3">
+                <p class="text-secondary small mb-0">Designed and Developed by AI Assistant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        // Product prices (Unit: VND)
+        const PRICES = {
+            1: 135000, // Snake Plant
+            2: 180000  // Money Tree
+        };
+        const DISCOUNT = 15000;
+
+        function formatCurrency(amount) {
+            return amount.toLocaleString('vi-VN') + '₫';
+        }
+
+        function updateQuantity(itemId, change) {
+            const quantityInput = document.getElementById(`qty-${itemId}`);
+            let currentQuantity = parseInt(quantityInput.value);
+            let newQuantity = currentQuantity + change;
+            
+            if (newQuantity >= 1) {
+                quantityInput.value = newQuantity;
+                updateItemTotal(itemId, newQuantity);
+                updateCartSummary();
+            }
+        }
+
+        function updateItemTotal(itemId, quantity) {
+            const price = PRICES[itemId];
+            const total = price * quantity;
+            document.getElementById(`total-${itemId}`).textContent = formatCurrency(total);
+        }
+
+        function updateCartSummary() {
+            let subtotal = 0;
+            // Assuming 2 products
+            subtotal += PRICES[1] * parseInt(document.getElementById('qty-1').value);
+            subtotal += PRICES[2] * parseInt(document.getElementById('qty-2').value);
+
+            const grandTotal = subtotal - DISCOUNT;
+
+            document.getElementById('subtotal').textContent = formatCurrency(subtotal);
+            document.getElementById('grand-total').textContent = formatCurrency(grandTotal);
+        }
+        
+        function removeItem(itemId) {
+            alert(`Removing item ${itemId} from cart (Mock function)`);
+            // In reality, you would remove the HTML element for this product
+        }
+
+        function clearCart() {
+             alert("All items cleared from cart (Mock function)");
+             // In reality, you would remove all cart-item elements
+             // and update the summary to 0
+        }
+
+        function checkout() {
+            alert("Proceeding to Checkout. Redirecting to Order page (Mock function)");
+        }
+        
+        // Initialize total when page loads
+        document.addEventListener('DOMContentLoaded', updateCartSummary);
+    </script>
+
+</body>
+</html>

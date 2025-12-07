@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Golden Edge Snake Plant - Green Garden</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJc5b5Uf3s3uG5f760x9j4e4y9u1t/r/i3n4pT4fR8f0A9f7c0a8c2l8x9j4b9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        :root {
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-700: #15803d;
+            --green-900: #14532d;
+            --red-sale: #dc2626;
+            --shadow-green: rgba(21, 128, 61, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--green-50); 
+        }
+        
+        .text-primary-green { color: var(--green-700) !important; }
+        .text-dark-green { color: var(--green-900) !important; }
+        .btn-green {
+            background-color: var(--green-700);
+            color: white;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-green:hover {
+            background-color: var(--green-900); 
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Product Details */
+        .product-image {
+            max-height: 550px;
+            object-fit: cover;
+            border-radius: 1rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        /* Quantity Input */
+        .quantity-input {
+            width: 120px;
+            display: flex;
+            align-items: center;
+        }
+        .quantity-input input {
+            text-align: center;
+            border: 1px solid #ccc;
+            border-left: none;
+            border-right: none;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+        }
+        .quantity-input button {
+            width: 40px;
+            height: 40px;
+            background-color: var(--green-100);
+            border: 1px solid #ccc;
+            color: var(--green-700);
+            transition: background-color 0.1s;
+        }
+        .quantity-input button:hover {
+             background-color: var(--green-700);
+             color: white;
+        }
+        
+        /* Tab Info */
+        .nav-link.active {
+            color: var(--green-700) !important;
+            border-bottom: 3px solid var(--green-700) !important;
+            border-color: transparent !important;
+        }
+        .nav-link {
+            color: #6c757d;
+        }
+
+        /* Suggested Card */
+        .product-card {
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            border: 1px solid #eefdf2;
+            background-color: white; 
+            border-radius: 0.75rem; 
+            overflow: hidden; 
+        }
+        .product-card:hover {
+            transform: scale(1.03); 
+            box-shadow: 0 8px 15px var(--shadow-green) !important; 
+        }
+        .card-img-top { height: 200px; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-lg bg-white container py-3">
+            <a class="navbar-brand fs-3 fw-bold text-dark-green d-flex align-items-center" href="index.html">
+                🌿 **Green Garden**
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium me-lg-3" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium me-lg-3 active" href="all-products.html">Plants</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium me-lg-3" href="#">Pots & Accessories</a></li>
+                    <li class="nav-item"><a class="nav-link text-secondary fw-medium me-lg-3" href="#">Care Tips</a></li>
+                    <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle btn btn-outline-success rounded-pill py-2 px-4 border-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Account</a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="#">Login</a></li>
+                            <li><a class="dropdown-item" href="#">Register</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link btn btn-green rounded-pill py-2 px-4 shadow-sm" href="cart.html">
+                            <i class="fas fa-shopping-cart me-1"></i> Cart 
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container my-5">
+        
+        <nav aria-label="breadcrumb" class="mb-4">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html" class="text-secondary text-decoration-none">Home</a></li>
+                <li class="breadcrumb-item"><a href="all-products.html" class="text-secondary text-decoration-none">Plants</a></li>
+                <li class="breadcrumb-item active text-primary-green" aria-current="page">Golden Edge Snake Plant</li>
+            </ol>
+        </nav>
+
+        <div class="row g-5">
+            
+            <div class="col-lg-6">
+                <img src="images/golden-snake-plant.jpg" class="img-fluid product-image w-100" alt="Golden Edge Snake Plant">
+            </div>
+            
+            <div class="col-lg-6">
+                <h1 class="fw-bold text-dark-green mb-3">Golden Edge Snake Plant</h1>
+                
+                <div class="d-flex align-items-center mb-3">
+                    <div class="text-warning me-2">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <span class="text-muted small">(4.5 / 5 - 24 Reviews)</span>
+                </div>
+                
+                <div class="mb-4">
+                    <span class="text-decoration-line-through text-muted fs-5 me-2">150k</span>
+                    <span class="display-5 fw-bold text-primary-green">135.000₫</span>
+                    <span class="badge bg-danger ms-2">-10%</span>
+                </div>
+
+                <p class="lead text-dark-green">**Summary:** The Golden Edge Snake Plant is an excellent choice for indoor decor, known for its **air purifying capabilities** and elegant look. It is easy to care for and perfect for desks or living rooms.</p>
+
+                <ul class="list-unstyled mb-4 text-dark-green fw-medium">
+                    <li><i class="fas fa-check-circle text-primary-green me-2"></i> Size: S (Height 25-30cm)</li>
+                    <li><i class="fas fa-check-circle text-primary-green me-2"></i> Benefit: Removes air toxins (Formaldehyde, Benzene)</li>
+                    <li><i class="fas fa-check-circle text-primary-green me-2"></i> Care Level: Very Easy</li>
+                </ul>
+
+                <hr>
+
+                <div class="d-flex align-items-center mb-4">
+                    <span class="fw-bold me-3">Quantity:</span>
+                    <div class="quantity-input me-4">
+                        <button class="btn rounded-start" type="button" onclick="changeQuantity(-1)">-</button>
+                        <input type="number" id="quantity" value="1" min="1" readonly>
+                        <button class="btn rounded-end" type="button" onclick="changeQuantity(1)">+</button>
+                    </div>
+                    <button class="btn btn-green btn-lg rounded-pill px-5 flex-grow-1 shadow-sm" onclick="addToCart()">
+                        <i class="fas fa-cart-plus me-2"></i> **Add to Cart**
+                    </button>
+                </div>
+                
+                <button class="btn btn-outline-success btn-lg rounded-pill px-5 w-100 border-2 fw-semibold" onclick="buyNow()">
+                    <i class="fas fa-money-bill-wave me-2"></i> Buy Now
+                </button>
+
+            </div>
+        </div>
+
+        <div class="mt-5 pt-4">
+            <ul class="nav nav-tabs border-0 mb-4" id="productTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active fw-bold" id="description-tab" data-bs-toggle="tab" data-bs-target="#description" type="button" role="tab" aria-controls="description" aria-selected="true">Detailed Description</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-bold" id="care-tab" data-bs-toggle="tab" data-bs-target="#care" type="button" role="tab" aria-controls="care" aria-selected="false">Care Guide</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link fw-bold" id="reviews-tab" data-bs-toggle="tab" data-bs-target="#reviews" type="button" role="tab" aria-controls="reviews" aria-selected="false">Reviews (24)</button>
+                </li>
+            </ul>
+            
+            <div class="tab-content bg-white p-4 rounded shadow-sm">
+                
+                <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+                    <h5 class="text-dark-green fw-bold">Key Features</h5>
+                    <p>The Golden Edge Snake Plant (*Sansevieria trifasciata*) is a drought-tolerant plant with high survival capability in low-light indoor environments. Its leaves feature deep green and bright golden edges, providing a modern accent to any space.</p>
+                    <h5 class="text-dark-green fw-bold mt-4">Health Benefits</h5>
+                    <p>Certified by NASA as one of the best air-purifying plants. It absorbs Carbon Dioxide (CO2) and releases Oxygen at night, making it ideal for bedrooms.</p>
+                </div>
+                
+                <div class="tab-pane fade" id="care" role="tabpanel" aria-labelledby="care-tab">
+                    <ul class="list-unstyled">
+                        <li class="mb-3">
+                            <h6 class="fw-bold text-primary-green"><i class="fas fa-sun me-2"></i> Light:</h6>
+                            <p>Prefers indirect bright light. Can tolerate low light, but the golden edge will be more vibrant with sufficient light.</p>
+                        </li>
+                        <li class="mb-3">
+                            <h6 class="fw-bold text-primary-green"><i class="fas fa-tint me-2"></i> Watering:</h6>
+                            <p>Water sparingly! Let the topsoil dry out completely between waterings. Overwatering is the leading cause of plant death.</p>
+                        </li>
+                        <li class="mb-3">
+                            <h6 class="fw-bold text-primary-green"><i class="fas fa-flask me-2"></i> Fertilizer:</h6>
+                            <p>Fertilize with a balanced indoor plant food 1-2 times per year (in spring and summer).</p>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
+                    <h5 class="text-dark-green fw-bold">24 Customer Reviews</h5>
+                    
+                    <div class="border p-3 rounded mb-3 bg-light">
+                        <div class="text-warning small mb-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                        </div>
+                        <p class="mb-1 fw-semibold">Tuyết Mai | 15/05/2025</p>
+                        <p class="small mb-0">Plant arrived healthy, fast delivery, and carefully packed. Highly satisfied!</p>
+                    </div>
+                    
+                    <div class="border p-3 rounded mb-3 bg-light">
+                        <div class="text-warning small mb-1">
+                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>
+                        </div>
+                        <p class="mb-1 fw-semibold">Quang Huy | 01/04/2025</p>
+                        <p class="small mb-0">The plant was slightly smaller than I expected, but the quality is generally good.</p>
+                    </div>
+                    
+                    <button class="btn btn-outline-success btn-sm mt-3">Write your review</button>
+                </div>
+            </div>
+        </div>
+
+        <section class="mt-5 pt-4">
+            <h3 class="fw-bold mb-4 text-center text-dark-green border-bottom pb-2">
+                <i class="fas fa-leaf me-2"></i> Similar Products
+            </h3>
+            
+            <div class="row g-4">
+                <div class="col-md-3 col-6">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="product-card card h-100 border-0 shadow-sm">
+                            <img src="images/mini-succulent.jpg" class="card-img-top" alt="Mini Succulent">
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate fw-semibold small">Mini Brown Succulent</h5>
+                                <span class="h6 text-primary-green fw-bold">45.000₫</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="product-card card h-100 border-0 shadow-sm">
+                            <img src="images/money-tree.jpg" class="card-img-top" alt="Money Tree">
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate fw-semibold small">Prosperous Money Tree</h5>
+                                <span class="h6 text-primary-green fw-bold">180.000₫</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="product-card card h-100 border-0 shadow-sm">
+                            <img src="images/imperial-philodendron.jpg" class="card-img-top" alt="Imperial Philodendron">
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate fw-semibold small">Imperial Philodendron</h5>
+                                <span class="h6 text-primary-green fw-bold">120.000₫</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-3 col-6">
+                    <a href="#" class="text-decoration-none text-dark">
+                        <div class="product-card card h-100 border-0 shadow-sm">
+                            <img src="images/peace-lily.jpg" class="card-img-top" alt="Peace Lily">
+                            <div class="card-body">
+                                <h5 class="card-title text-truncate fw-semibold small">Peace Lily Hydroponic</h5>
+                                <span class="h6 text-primary-green fw-bold">110.000₫</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                </div>
+            <div class="text-center border-top border-secondary-subtle pt-3 mt-3">
+                <p class="text-secondary small mb-0">Designed and Developed by AI Assistant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        function changeQuantity(change) {
+            const quantityInput = document.getElementById('quantity');
+            let currentQuantity = parseInt(quantityInput.value);
+            let newQuantity = currentQuantity + change;
+            if (newQuantity >= 1) {
+                quantityInput.value = newQuantity;
+            }
+        }
+
+        function addToCart() {
+            const quantity = document.getElementById('quantity').value;
+            alert(`Added ${quantity} Golden Edge Snake Plant to cart!`);
+            // Actual cart logic goes here
+        }
+
+        function buyNow() {
+             alert('Buy Now function is being processed. Redirecting to checkout...');
+             // Actual checkout logic goes here
+        }
+    </script>
+
+</body>
+</html>

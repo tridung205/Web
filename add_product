@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Garden - Add New Product</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJc5b5Uf3s3uG5f760x9j4e4y9u1t/r/i3n4pT4fR8f0A9f7c0a8c2l8x9j4e4y9u1t/r/i3n4pT4fR8f0A9f7c0a8c2l8x9j4b9g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <style>
+        :root {
+            --green-50: #f0fdf4;
+            --green-100: #dcfce7;
+            --green-700: #15803d;
+            --green-900: #14532d;
+            --red-sale: #dc2626;
+            --shadow-green: rgba(21, 128, 61, 0.2);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--green-50); 
+        }
+        
+        .bg-primary-green { background-color: var(--green-100) !important; }
+        .text-primary-green { color: var(--green-700) !important; }
+        .text-dark-green { color: var(--green-900) !important; }
+        .btn-green {
+            background-color: var(--green-700);
+            color: white;
+            border: none;
+            transition: all 0.2s;
+        }
+        .btn-green:hover {
+            background-color: var(--green-900); 
+            color: white;
+            transform: translateY(-2px);
+        }
+        .btn-outline-success {
+            color: var(--green-700) !important;
+            border-color: var(--green-700) !important;
+        }
+        .btn-outline-success:hover {
+            background-color: var(--green-700) !important;
+            color: white !important;
+        }
+
+        /* Form styling */
+        .form-card {
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="bg-white shadow-sm sticky-top">
+        <nav class="navbar navbar-expand-lg bg-white container py-3">
+            <a class="navbar-brand fs-3 fw-bold text-dark-green d-flex align-items-center" href="index.html">
+                🌿 **Green Garden**
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav align-items-lg-center">
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary fw-medium me-lg-3" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary fw-medium me-lg-3" href="#products">Plants</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary fw-medium me-lg-3" href="#">Pots & Accessories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-secondary fw-medium me-lg-3" href="#care-tips">Care Tips</a>
+                    </li>
+                    
+                    <li class="nav-item dropdown ms-lg-3">
+                        <a class="nav-link dropdown-toggle btn btn-outline-success rounded-pill py-2 px-4 border-2" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Account
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="login.html">Login</a></li>
+                            <li><a class="dropdown-item" href="register.html">Register</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item ms-lg-3 mt-2 mt-lg-0">
+                        <a class="nav-link btn btn-green rounded-pill py-2 px-4 shadow-sm" href="cart.html">
+                            <i class="fas fa-shopping-cart me-1"></i> Cart (0)
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    
+    <main class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-md-7 col-lg-6"> 
+                <div class="card form-card border-0 p-3 p-md-4">
+                    <h4 class="fw-bold text-dark-green mb-4 text-center"> 
+                        <i class="fas fa-plus-circle me-2"></i> Add New Product
+                    </h4>
+                    <p class="text-muted text-center mb-4 small">Fill in the details for the new plant product.</p>
+
+                    <form action="#" method="POST" enctype="multipart/form-data">
+                        
+                        <div class="mb-3">
+                            <label for="productName" class="form-label fw-semibold small">Product Name <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control py-1" id="productName" name="productName" required placeholder="e.g., Mini Golden Pothos">
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="productPrice" class="form-label fw-semibold small">Price (₫) <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control py-1" id="productPrice" name="productPrice" required min="1000" placeholder="e.g., 99000">
+                            </div>
+                            <div class="col-md-6 mt-3 mt-md-0">
+                                <label for="productDiscount" class="form-label fw-semibold small">Discount (%)</label>
+                                <input type="number" class="form-control py-1" id="productDiscount" name="productDiscount" min="0" max="100" value="0" placeholder="e.g., 10">
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="shortDesc" class="form-label fw-semibold small">Short Description (for card)</label>
+                            <input type="text" class="form-control py-1" id="shortDesc" name="shortDesc" maxlength="50" placeholder="e.g., Air purification, easy to live">
+                            <div class="form-text small">Max 50 characters.</div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="productDesc" class="form-label fw-semibold small">Full Product Description</label>
+                            <textarea class="form-control" id="productDesc" name="productDesc" rows="3" placeholder="Enter detailed information about the plant..."></textarea>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="productImage" class="form-label fw-semibold small">Product Image <span class="text-danger">*</span></label>
+                            <input class="form-control py-1" type="file" id="productImage" name="productImage" accept="image/*" required>
+                            <div class="form-text small">Upload a clear image of the product (recommended aspect ratio 1:1 or 4:3).</div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label for="productCategory" class="form-label fw-semibold small">Category/Tags</label>
+                            <select class="form-select py-1" id="productCategory" name="productCategory">
+                                <option selected>Select a category</option>
+                                <option value="desktop">Desktop Plants</option>
+                                <option value="succulent">Succulents</option>
+                                <option value="fengshui">Feng Shui Plants</option>
+                                <option value="indoor">Indoor Plants</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-green fw-bold rounded-pill py-2">
+                                <i class="fas fa-upload me-2"></i> Add Product
+                            </button>
+                            <button type="reset" class="btn btn-outline-success btn-sm rounded-pill mt-2">
+                                Clear Form
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="bg-dark text-white pt-5 pb-3 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="fw-bold text-primary-green">Green Garden</h5>
+                    <p class="text-secondary small">Bringing the green nature closer to your workspace and home.</p>
+                    <p class="text-secondary small">© 2025 Green Garden. All rights reserved.</p>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold">Company</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-secondary text-decoration-none">About Us</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Contact</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2 mb-4">
+                    <h6 class="fw-bold">Support</h6>
+                    <ul class="list-unstyled small">
+                        <li><a href="#" class="text-secondary text-decoration-none">Shipping & Returns</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">FAQ</a></li>
+                        <li><a href="#" class="text-secondary text-decoration-none">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h6 class="fw-bold">Follow Us</h6>
+                    <div class="d-flex">
+                        <a href="#" class="text-secondary me-3"><i class="fab fa-facebook-f fa-lg"></i></a>
+                        <a href="#" class="text-secondary me-3"><i class="fab fa-instagram fa-lg"></i></a>
+                        <a href="#" class="text-secondary"><i class="fab fa-twitter fa-lg"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center border-top border-secondary-subtle pt-3 mt-3">
+                <p class="text-secondary small mb-0">Designed and Developed by AI Assistant</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+</body>
+</html>
